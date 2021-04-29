@@ -1,5 +1,6 @@
 from Generator import *
 from data_cleaning import *
+from generator_test_paper import *
 import yaml
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -53,7 +54,15 @@ def test_data_cleaning():
     # print(pset[pset[r"对应的知识点"] == "事务管理方式"].values)
 
 
+def test_generator_test_paper():
+    f = open(r'..\DataBase\problems_set_request.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+
+    generator_single_test(r"__cache__\problem_set.xlsx", request)
+
+
 if __name__ == '__main__':
     # test_generator()
     test_data_cleaning()
+    test_generator_test_paper()
 

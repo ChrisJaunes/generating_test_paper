@@ -49,4 +49,4 @@ def generator_single_test(pset_path: str, ptest_config: dict, seed: int = 10, nu
 
     # 保存试卷
     ptest.to_excel(r"__cache__\test_paper{0}.xlsx".format(num), encoding="utf8")
-    pset.to_excel(r"__cache__\problem_set.xlsx", encoding="utf8")
+    pset[1:].to_excel(r"__cache__\problem_set.xlsx", encoding="utf8")

@@ -58,7 +58,8 @@ def test_generator_test_paper():
     f = open(r'..\DataBase\problems_set_request.yml', 'r', encoding='utf-8')
     request = yaml.safe_load(f)
 
-    generator_single_test(r"__cache__\problem_set.xlsx", request)
+    for i in range(10):
+        generator_single_test(r"__cache__\problem_set.xlsx", request, 10, i)
 
 
 if __name__ == '__main__':

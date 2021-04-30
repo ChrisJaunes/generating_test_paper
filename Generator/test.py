@@ -1,6 +1,7 @@
 from Generator import *
 from data_cleaning import *
 from generator_test_paper import *
+from format_test_paper import *
 import yaml
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -60,6 +61,7 @@ def test_generator_test_paper():
 
     for i in range(10):
         generator_single_test(r"__cache__\problem_set.xlsx", request, 10, i)
+        format_test_paper(i)
 
 
 if __name__ == '__main__':

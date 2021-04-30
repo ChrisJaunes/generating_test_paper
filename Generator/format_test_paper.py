@@ -16,7 +16,7 @@ def format_test_paper(num: int):
     doc.add_heading(f"试卷 {num}", level=0)
     doc.add_paragraph("组题: 黄佳俊、温晓平 审稿：李粤", "Subtitle").paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
-    for ptest_type in ["单选题", "多选题", "填空题"]:
+    for ptest_type in ["单选题", "多选题", "填空题", "编程题"]:
         doc.add_heading(ptest_type, level=2)
         view = ptest[ptest["题型"] == ptest_type].take(np.random.permutation(len(ptest[ptest["题型"] == ptest_type])))[["题干", "选择", "答案", "题型序号"]]
         ptest_num = 0

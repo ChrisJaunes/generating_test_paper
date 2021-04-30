@@ -18,6 +18,7 @@ def test_data_cleaning():
     # print(yaml.safe_dump(type_change, f, allow_unicode=True))
     f = open(r'..\DataBase\problems_set_attr_mapping.yml', 'r', encoding='utf-8')
     attr_mapping = yaml.safe_load(f)
+    data_ignore = [65, 66]
     # print(attr_mapping, type(attr_mapping))
     data_cleaning(r"..\DataBase\problem_set_java.xls", attr_mapping)
 
@@ -56,12 +57,55 @@ def test_data_cleaning():
 
 
 def test_generator_test_paper():
-    f = open(r'..\DataBase\problems_set_request.yml', 'r', encoding='utf-8')
+    f = open(r'..\DataBase\problems_set_request1.yml', 'r', encoding='utf-8')
     request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 1)
+    format_test_paper(1)
 
-    for i in range(10):
-        generator_single_test(r"__cache__\problem_set.xlsx", request, 10, i)
-        format_test_paper(i)
+    f = open(r'..\DataBase\problems_set_request1.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 2)
+    format_test_paper(2)
+
+    f = open(r'..\DataBase\problems_set_request1.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 3)
+    format_test_paper(3)
+
+    f = open(r'..\DataBase\problems_set_request1.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 4)
+    format_test_paper(4)
+
+    f = open(r'..\DataBase\problems_set_request1.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 5)
+    format_test_paper(5)
+
+    f = open(r'..\DataBase\problems_set_request2.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 6)
+    format_test_paper(6)
+
+    f = open(r'..\DataBase\problems_set_request2.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 7)
+    format_test_paper(7)
+
+    f = open(r'..\DataBase\problems_set_request2.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 8)
+    format_test_paper(8)
+
+    f = open(r'..\DataBase\problems_set_request2.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 9)
+    format_test_paper(9)
+
+    f = open(r'..\DataBase\problems_set_request2.yml', 'r', encoding='utf-8')
+    request = yaml.safe_load(f)
+    generator_single_test(r"__cache__\problem_set.xlsx", request, 10, 10)
+    format_test_paper(10)
 
 
 if __name__ == '__main__':

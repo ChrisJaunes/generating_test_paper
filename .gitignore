@@ -6,3 +6,4 @@ Generator/__pycache__/*
 *.rar
 *.zip
 Generator/__cache__/*
+Generator/supplement/*

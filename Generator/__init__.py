@@ -16,4 +16,5 @@ def generator(path: str):
     :return:
     """
     c = pd.read_csv(path, encoding="utf8")
+    # print(type(c))    dataframe
     print(c[c[r"初级"] == "Yes"][{r"知识点", r"能力范畴"}])

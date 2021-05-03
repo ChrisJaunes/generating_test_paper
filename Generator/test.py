@@ -67,5 +67,5 @@ def test_generator_test_paper():
 if __name__ == '__main__':
     # test_generator()
     test_data_cleaning()
-    test_generator_test_paper()
+    # test_generator_test_paper()
 

@@ -30,7 +30,7 @@ def Crawler(context):
 
 def getCrawler():
     CrawlerContext = namedtuple('CrawlerContext', ['cookie'])
-    crawlerContext = CrawlerContext("")
+    crawlerContext = CrawlerContext("__snaker__id=DM49Ws5dMIa9oTv2; NOWCODERUID=D60CE7A7B12E831C306597DA09A1DACF; NOWCODERCLINETID=6276CD1A9ED3213DD255EC0C82369756; from=nowcoderexam; gr_user_id=fd117638-ee50-4b67-beed-e62a682a778d; c196c3667d214851b11233f5c17f99d5_gr_last_sent_cs1=4660088; grwng_uid=4bf44f29-75f4-4a00-a071-507b012831c5; _9755xjdesxxd_=32; c196c3667d214851b11233f5c17f99d5_gr_session_id=3a641f72-9e84-435b-a10b-def13eced625; t=519BBC8F0B0CF8FD3B7BC0A88C19CB82; c196c3667d214851b11233f5c17f99d5_gr_last_sent_sid_with_cs1=3a641f72-9e84-435b-a10b-def13eced625; c196c3667d214851b11233f5c17f99d5_gr_session_id_3a641f72-9e84-435b-a10b-def13eced625=true; Hm_lvt_a808a1326b6c06c437de769d1b85b870=1619952208,1619952245,1620146404,1620147649; qc_qid_set_next_pre=358074_97545_369502_162236_1085940_590667_358785_358787_1056742_1555123_591386_1636096_1636008_1636012_1636011_335753_1531372_800819_1664956_1664960; gdxidpyhxdE=CpnoKeT7p0ZH%5C3eEfBsIoihZJ%2FOgBC%2BJ8N78CivuC9kohhU64YntbuAITilIK4%2Bj04NsP1OcC7ABAmgL6w601jK%5Cyw5bvS2J6W%2FLb7ji7U234H0z%5C9mEgRTIfPkLt%2B9dB9gBX4NwAgm%5Cpvj%2FKPbzNt7CbnijLq1%2Bn%2B2v86tI0m%2B16VIB%3A1620148799258; c196c3667d214851b11233f5c17f99d5_gr_cs1=4660088; Hm_lpvt_a808a1326b6c06c437de769d1b85b870=1620149383; SERVERID=01ca37401d33369101f3ce5bd23561b1|1620150384|1620146549")
     crawler = Crawler(crawlerContext)
     return crawler
 
@@ -83,18 +83,19 @@ def access(pageLinks: list, crawler, choiceNum: int = 7,
     return paper_supplement
 
 
-def save(paper_supplement: pd.DataFrame):
-    # 一次卷子只有3道多选，所以得多次
-    # old_paper = pd.read_excel(r"supplement\DB-primary.xlsx")
-    # pd.concat([old_paper, paper_supplement], ignore_index=True).to_excel(r"supplement\DB-primary.xlsx", encoding="utf8")
-    # 空目录时使用
-    paper_supplement.to_excel(r"__cache__\DB-primary.xlsx", encoding="utf8")
-
-
 def getSingleTestPaper(url, crawler):
     print(url, crawler)
     urls = getPageLinks(url, crawler)
     paper_supplement = access(urls, crawler)
     print(paper_supplement)
-    save(paper_supplement)
+    # 保存文件， 第一次使用请建立problem_set_index.txt文件
+    f = open(r"__cache__\problem_set_index.txt", "r+")
+    index = int(f.read()) + 1
+    paper_supplement.to_excel(rf"__cache__\problem_set{index}.xlsx", encoding="utf8")
+    f.seek(0)
+    f.write(str(index))
+    f.close()
 
+
+if __name__ == "__main__" :
+    getSingleTestPaper("https://www.nowcoder.com/test/question/done?tid=44123030&qid=166241", getCrawler())

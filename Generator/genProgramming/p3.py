@@ -32,8 +32,10 @@ J中的字符不重复。
 
 def generatorProblemSTD() -> ProgrammingProblemSTD:
     return ProgrammingProblemSTD("Java", """
-class Solution {
-    public int numJewelsInStones(String jewels, String stones) {
+import java.io.*;
+import java.util.*;
+public class Solution {
+    static public int numJewelsInStones(String jewels, String stones) {
         int jewelsCount = 0;
         int jewelsLength = jewels.length(), stonesLength = stones.length();
         for (int i = 0; i < stonesLength; i++) {
@@ -48,6 +50,15 @@ class Solution {
         }
         return jewelsCount;
     }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String jew;
+        String sto;
+        jew = in.next();
+        sto = in.next();
+        System.out.println(numJewelsInStones(jew, sto));
+    }
 }
     """)
 
@@ -55,6 +66,6 @@ class Solution {
 def generatorProblemTestSingle(f, seed: int = 2021):
     random.seed(seed)
     jn = random.randint(1, 50)
-    print(random.sample(string.ascii_letters, jn), file=f)
+    print("".join(random.sample(string.ascii_letters, jn)), file=f)
     sn = random.randint(1, 50)
     print("".join([random.choice(string.ascii_letters) for _ in range(sn)]), file=f)

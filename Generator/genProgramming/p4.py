@@ -56,8 +56,10 @@ n == accounts[i].length
 
 def generatorProblemSTD() -> ProgrammingProblemSTD:
     return ProgrammingProblemSTD("Java", """
-class Solution {
-    public int maximumWealth(int[][] accounts) {
+import java.io.*;
+import java.util.*;
+public class Solution {
+    static public int maximumWealth(int[][] accounts) {
         int ans = Integer.MIN_VALUE;
         for (int i = 0; i < accounts.length; i++) {
             int t = 0;
@@ -67,6 +69,19 @@ class Solution {
             ans = Math.max(ans, t);
         }
         return ans;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int row = in.nextInt();
+        int column = in.nextInt();
+        int[][] acc = new int[row][column];
+        for (int j = 0; j < row; ++j){
+            for (int k = 0; k < column; ++k){
+                acc[j][k] = in.nextInt();
+            }
+        }
+        System.out.println(maximumWealth(acc));
     }
 }
     """)

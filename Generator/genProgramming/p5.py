@@ -11,6 +11,7 @@ def generatorProblemDesc() -> ProgrammingProblemDesc:
 
 示例 1：
 输入：
+6
 1 2 3 1 1 3
 输出：
 4
@@ -19,6 +20,7 @@ def generatorProblemDesc() -> ProgrammingProblemDesc:
 
 示例 2：
 输入：
+4
 1 1 1 1
 输出：
 6
@@ -27,6 +29,7 @@ def generatorProblemDesc() -> ProgrammingProblemDesc:
 
 示例 3：
 输入：
+3
 1 2 3
 输出：0
 
@@ -39,15 +42,14 @@ def generatorProblemDesc() -> ProgrammingProblemDesc:
 
 
 def generatorProblemSTD() -> ProgrammingProblemSTD:
-    return ProgrammingProblemSTD("C++", """
-#include <bits/stdc++.h>
-using namespace std;
-class Solution {
-public:
-    int numIdenticalPairs(vector<int>& nums) {
+    return ProgrammingProblemSTD("Java", """
+import java.io.*;
+import java.util.*;
+public class Solution {
+    static public int numIdenticalPairs(int[] nums) {
         int ans = 0;
-        for (int i = 0; i < nums.size(); ++i) {
-            for (int j = i + 1; j < nums.size(); ++j) {
+        for (int i = 0; i < nums.length; ++i) {
+            for (int j = i + 1; j < nums.length; ++j) {
                 if (nums[i] == nums[j]) {
                     ++ans;
                 }
@@ -55,8 +57,17 @@ public:
         }
         return ans;
     }
-};
-int main(){}
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int len = in.nextInt();
+        int[] num = new int[len];
+        for (int j = 0; j < len; ++j){
+                num[j]= in.nextInt();
+        }
+        System.out.println(numIdenticalPairs(num));
+    }
+}
     """)
 
 
@@ -65,3 +76,4 @@ def generatorProblemTestSingle(f, seed: int = 2021):
     n = random.randint(1, 100)
     print(n, file=f)
     print(" ".join([str(random.randint(1, 100)) for _ in range(100)]), file=f)
+

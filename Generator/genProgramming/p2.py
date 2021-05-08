@@ -13,7 +13,6 @@ def generatorProblemDesc() -> ProgrammingProblemDesc:
 4
 1 2 3 4
 输出：
-4
 1 3 6 10
 解释：动态和计算过程为 [1, 1+2, 1+2+3, 1+2+3+4] 。
 
@@ -23,7 +22,6 @@ def generatorProblemDesc() -> ProgrammingProblemDesc:
 5
 1 1 1 1 1
 输出：
-5
 1 2 3 4 5
 解释：动态和计算过程为 [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1] 。
 
@@ -44,8 +42,10 @@ def generatorProblemDesc() -> ProgrammingProblemDesc:
 
 def generatorProblemSTD() -> ProgrammingProblemSTD:
     return ProgrammingProblemSTD("Java", """
-class Solution {
-    public int[] runningSum(int[] nums) {
+import java.io.*;
+import java.util.*;
+public class Solution {
+     static public int[] runningSum(int[] nums) {
         int[] a=new int[nums.length];
         int sum=0;
         for(int i=0;i<nums.length;i++){
@@ -53,6 +53,22 @@ class Solution {
             a[i] = sum;
         }
         return a;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int length = in.nextInt();
+        int temp[] = new int[length];
+        for (int i = 0; i < length; ++i){
+            temp[i] = in.nextInt();
+        }
+        int answer[] = runningSum(temp);
+        int n = 0;
+        while (n < length){
+            System.out.print(answer[n]);
+            System.out.print(" ");
+            ++n;
+        }
     }
 }
     """)
